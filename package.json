@@ -3,9 +3,9 @@
   "displayName": "gsjs",
   "description": "a vscode extension for gs",
   "keywords": ["gs", "gsjs", "inspur"],
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"publisher": "jonson",
-	"image": "images/icon.png",
+	"icon": "images/icon.png",
   "engines": {
     "vscode": "^1.40.0"
   },
