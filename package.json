@@ -2,27 +2,32 @@
   "name": "gsjs",
   "displayName": "gsjs",
   "description": "a vscode extension for gs",
-  "version": "0.0.1",
+  "keywords": ["gs", "gsjs", "inspur"],
+	"version": "0.0.2",
+	"publisher": "jonson",
+	"image": "images/icon.png",
   "engines": {
     "vscode": "^1.40.0"
   },
   "categories": [
-    "Other"
+    "Snippets"
   ],
   "activationEvents": [
+		"onLanguage:javascript",
     "onCommand:extension.helloWorld"
   ],
   "main": "./src/extension.js",
   "contributes": {
+    "configuration": {
+    },
     "commands": [{
       "command": "extension.helloWorld",
       "title": "Hello World"
     }],
     "snippets": [{
-        "language": "javascript",
-        "path": "./snippets/javascript.json"
-      }
-    ]
+      "language": "javascript",
+      "path": "./snippets/javascript.json"
+    }]
   },
   "scripts": {
     "test": "node ./test/runTest.js"
@@ -37,5 +42,14 @@
     "mocha": "^6.2.2",
     "typescript": "^3.6.4",
     "vscode-test": "^1.2.2"
-  }
+  },
+	"license": "SEE LICENSE IN LICENSE.txt",
+	"bugs": {
+			"url": "https://github.com/xjonson/vscode-extension-gsjs/issues"
+	},
+	"repository": {
+			"type": "git",
+			"url": "https://github.com/xjonson/vscode-extension-gsjs"
+	},
+	"homepage": "https://github.com/xjonson/vscode-extension-gsjs/"
 }
