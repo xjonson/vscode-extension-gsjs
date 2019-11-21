@@ -1,0 +1,150 @@
+{
+    
+	// ------------------------------------------------------------------------------------------------------------------
+	// ZJ
+	// ------------------------------------------------------------------------------------------------------------------
+	"Print zj.rtf.invokeAOPMethod": {
+		"description": "模板: 资金 服务端请求方法",
+		"prefix": "temp zj.rtf.invokeAOPMethod",
+		"body": [
+			"var params = [$4];",
+			"zj.rtf.invokeAOPMethod('$1',",
+			"\t'$1$2',",
+			"\t'$3', params)",
+			"\t.then(function (result) {",
+			"\t\tif (result && result.MedReturn) {",
+			"\t\t\tvar medReturn = result.MedReturn;$5",
+			"\t\t}",
+			"\t})"
+		],
+	},
+	"Print zj.rtf.createLockObj": {
+		"description": "声明：资金 创建服务端请求单条锁对象",
+		"prefix": "var zj.rtf.createLockObj",
+		"body": [
+			"var lockID = $1;",
+			"var lockObj = zj.rtf.createLockObj('ZJGX', lockID, 'A');"
+		]
+	},
+	"Print zj.formHelper.addDataLock": {
+		"description": "模板：资金 formHelper单条加锁",
+		"prefix": "temp zj.formHelper.addDataLock",
+		"body": [
+			"var lockID = $1;",
+			"zj.formHelper.addDataLock('ZJGX', lockID).then(function () {$2});",
+		]
+	},
+	"Print taurus.aop.createLockObj": {
+		"description": "声明：资金 创建批量加锁对象",
+		"prefix": ["var taurus.aop.createLockObj", "var batchLockObj"],
+		"body": [
+			"var lockIDs = [];",
+			"var batchLockObj = [{",
+			"\tDataType: '${1:ZJJSDJ}',",
+			"\tLockType: 'A',",
+			"\tDataID: lockIDs,",
+			"\tMsgField: '${1:ZJJSDJ}_${2:DJBH}',",
+			"\tPrimaryKeyFiled: '${1:ZJJSDJ}_${3:DJNM}'",
+			"}];",
+		]
+	},
+	"Print taurus.formHelper.addBetchDataLock": {
+		"description": "模板：资金 formHelper批量加锁",
+		"prefix": "temp taurus.formHelper.addBetchDataLock",
+		"body": [
+			"var lockObj = taurus.aop.createLockObj(batchLockObj);",
+			"taurus.formHelper.addBetchDataLock(lockObj).then(function(result) {",
+			"\tif (result.AOPPreMsg.length > 0) {",
+			"\t\tvar AOPPreMsg = JSON.parse(result.AOPPreMsg)",
+			"\t\tif(AOPPreMsg.${1:ZJJSDJ}) {",
+			"\t\t\t$.each(AOPPreMsg.${1:ZJJSDJ}, function(i, val) {",
+			"\t\t\t\t$.notify.info(val.CLJG);",
+			"\t\t\t})",
+			"\t\t} else {",
+			"\t\t\t$.notify.info(result.AOPPreMsg);",
+			"\t\t}",
+			"\t\treturn false;",
+			"\t} ",
+			"\telse {$4}",
+			"})",
+		]
+	},
+	"Print taurus.formHelper.releaseBetchDataLock": {
+		"description": "模板：资金 创建批量解锁对象",
+		"prefix": "temp taurus.formHelper.releaseBetchDataLock",
+		"body": [
+			"var batchLockObj = [{",
+			"\tDataType: '${1:ZJJSDJ}',",
+			"\tLockType: 'R',",
+			"\tDataID: [],",
+			"\tMsgField: 'ZJJSDJ_DJBH',",
+			"\tPrimaryKeyFiled: 'ZJJSDJ_DJNM'",
+			"}];",
+			"var lockObj = taurus.aop.createLockObj(batchLockObj);",
+			"taurus.formHelper.releaseBetchDataLock(lockObj);",
+		]
+	},
+	"Print zj.formHelper.registFrameCloseLock": {
+		"description": "声明：资金 注册页面关闭解锁事件",
+		"prefix": "var zj.formHelper.registFrameCloseLock",
+		"body": [
+			"var lockID = $1;",
+			"var lockObj = zj.rtf.createLockObj('ZJGX', lockID, 'R');",
+			"zj.formHelper.registFrameCloseLock(self, lockObj, $2);",
+		]
+	},
+	"Print taurus.formHelper.openMenu": {
+		"description": "声明：资金 打开新tab页方法",
+		"prefix": "temp taurus.formHelper.openMenu",
+		"body": [
+			"var tabName = '$1';",
+			"var url = '/cwbase/web/zj/$2';",
+			"taurus.formHelper.openMenu(url, tabName);"
+		]
+	},
+	"Print zj.formHelper.registCardHelpEventShieldStateMachine": {
+		"description": "模板：资金 注册卡片帮助",
+		"prefix": "temp zj.formHelper.registCardHelpEventShieldStateMachine",
+		"body": [
+			"var helpID = ['$1'];",
+			"var events = [self.$2];",
+			"zj.formHelper.registCardHelpEventShieldStateMachine(self, helpID, events);",
+		]
+	},
+	"Print zj.formHelper.registListHelpEventShieldStateMachine": {
+		"description": "模板：资金 注册列表帮助",
+		"prefix": "temp zj.formHelper.registListHelpEventShieldStateMachine",
+		"body": [
+			"var helpID = ['$1'];",
+			"var events = [self.$2];",
+			"zj.formHelper.registListHelpEventShieldStateMachine(self, helpID, events);",
+		]
+	},
+	"Print zj.formHelper.regCardNumberFocus": {
+		"description": "模板：资金 注册卡片的数字输入框在获取焦点时自动全选",
+		"prefix": "temp zj.formHelper.regCardNumberFocus",
+		"body": [
+			"zj.formHelper.regCardNumberFocus();",
+		]
+	},
+	"Print zj.formHelper.confirm": {
+		"description": "模板：资金 确认弹框",
+		"prefix": "temp zj.formHelper.confirm",
+		"body": [
+			"zj.formHelper.confirm(${1:'确认？'}, true).then(function () {$2}).fail(function () {",
+			"\tself.context.setParam('cancelTransit', true);$3",
+			"});",
+		]
+	},
+	// ------------------------------------------------------------------------------------------------------------------
+	// ZJGX
+	// ------------------------------------------------------------------------------------------------------------------
+	// 获取资金报账单类型内码
+	"Print zj.zjgx.bzlx": {
+		"description": "声明: 资金共享 报账单类型内码",
+		"prefix": "var zj.zjgx.bzlx",
+		"body": [
+			"var ${1:fkd} = zj.zjgx.bzlx.${1:fkd}",
+		]
+	},
+}

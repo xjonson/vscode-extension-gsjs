@@ -1,0 +1,179 @@
+{
+    
+	// ------------------------------------------------------------------------------------------------------------------
+	// GSP
+	// ------------------------------------------------------------------------------------------------------------------
+	// template: gsp.application.invoke
+	"Print gsp.application.invoke": {
+		"description": "模板: gsp.application.invoke 不同表单方法之间调用",
+		"prefix": "temp gsp.application.invoke",
+		"body": [
+			"gsp.application.invoke({",
+			"\ttarget: '$1',",
+			"\tmethodName: '$2',",
+			"\tscope: '${3:Form1}',",
+			"\tparams: [$4]",
+			"});"
+		]
+	},
+	// template: self.context.invoke
+	"Print self.context.invoke": {
+		"description": "模板: self.context.invoke 同表单方法之间调用",
+		"prefix": "temp self.context.invoke",
+		"body": [
+			"self.context.invoke({",
+			"\ttarget: '$1',",
+			"\tmethodName: '$2',",
+			"\tparams: [$4]",
+			"});"
+		]
+	},
+	"Print conditionStr": {
+		"description": "模板: 组织平台过滤条件字符串",
+		"prefix": "temp condition string",
+		"body": [
+			"var conditionArr = [];",
+			"conditionArr.push({",
+			"\t\"Lbracket\": \"\",",
+			"\t\"Compare\": \"\",",
+			"\t\"Field\": \"\",",
+			"\t\"DataType\": \"String\",",
+			"\t\"Value\": \"\",",
+			"\t\"Rbracket\": \" \",",
+			"\t\"Relation\": \"\",",
+			"\t\"IsCanChange\": true,",
+			"\t\"ConvertUpperToCompare\": false,",
+			"\t\"Expresstype\": 0,",
+			"\t\"FieldCaption\": \"\",",
+			"\t\"InnerFormula\": \"\",",
+			"\t\"Owner\": \"\",",
+			"\t\"DisplayValue\": \"\",",
+			"\t\"Description\": \"\"",
+			"});",
+			"var condition = JSON.stringify(conditionArr);"
+		]
+	},
+	"Print conditionFunction": {
+		"description": "模板: 组织平台过滤条件函数",
+		"prefix": "temp conditon function",
+		"body": [
+			""
+		]
+	},
+	// 模板: 平台打开新tab页方法
+	"Print gsp.rtf.func.openUrl": {
+		"description": "模板: 平台打开新tab页方法",
+		"prefix": "temp gsp.rtf.func.openUrl",
+		"body": [
+			"var tabName = '$1';",
+			"var id = ${2: createGuid()};",
+			"var url = '/cwbase/web/zj/$3';",
+			"gsp.rtf.func.openUrl({ id: id, tabName: tabName, url: url, reload: true });"
+		]
+	},
+	// 模板: 平台获取当前业务操作ID
+	"Print gsp.rtf.context.get('bizOpId')": {
+		"description": "模板: 平台获取当前业务操作ID",
+		"prefix": "var gsp.rtf.context.get('bizOpId')",
+		"body": [
+			"var bizOpId = gsp.rtf.context.get('bizOpId');"
+		]
+	},
+	// ------------------------------------------------------------------------------------------------------------------
+	// ADP
+	// ------------------------------------------------------------------------------------------------------------------
+    // adp.number.toChineseMoney(123123)
+    
+	"Print getUtlParam": {
+		"description": "声明: 获取URL参数",
+		"prefix": "var getUrlParam",
+		"body": [
+			"var $1 = self.getUrlParam('$1');"
+		]
+	},
+	"Print getGlobalObj": {
+		"description": "声明: 获取全局变量",
+		"prefix": "var getGlobalObj",
+		"body": [
+			"var $1 = self.getGlobalObj('$2');"
+		]
+	},
+	"Print setGlobalObj": {
+		"description": "声明: 设置全局变量",
+		"prefix": "setGlobalObj",
+		"body": [
+			"// notice: 目前平台更推荐使用 updateGlobalObj 的写法",
+			"self.setGlobalObj('$1', $2);"
+		]
+	},
+	"Print updateGlobalObj": {
+		"description": "声明: 更新全局变量",
+		"prefix": "updateGlobalObj",
+		"body": [
+			"self.updateGlobalObj('$1', '$2', true);"
+		]
+	},
+	"Print getParam": {
+		"description": "声明: 获取表单上下文参数",
+		"prefix": "var self.context.getParam",
+		"body": [
+			"var str$1 = self.context.getParam('$1');"
+		]
+	},
+	"Print setParam": {
+		"description": "模板: 设置表单上下文参数",
+		"prefix": "self.context.setParam",
+		"body": [
+			"self.context.setParam('$1', '$2');"
+		]
+	},
+	"Print selfopenMenu": {
+		"description": "模板: self打开新tab页方法",
+		"prefix": "temp self openMenu",
+		"body": [
+			"// 定义：listBaseController.js[3369]",
+			"var tabName = '$1';",
+			"var id = ${2: createGuid()};",
+			"var url = '/cwbase/web/zj/$3';",
+			"var opts = {};",
+			"var reload = true;",
+			"self.openMenu(tabName, url, id, opts, reload);"
+		]
+	},
+	"Print getFuncId": {
+		"description": "声明: 获取FuncID",
+		"prefix": "var self.getFuncId",
+		"body": [
+			"var funcId = self.getFuncId();"
+		]
+	},
+	"Print getParentFuncId": {
+		"description": "声明: 子卡片获取父列表FuncID",
+		"prefix": "var self.getParentFuncId",
+		"body": [
+			"var parentFuncId = self.getParentFuncId();"
+		]
+	},
+	// ------------------------------------------------------------------------------------------------------------------
+	// 状态机
+	// ------------------------------------------------------------------------------------------------------------------
+	// 阻止状态机迁移
+	"Print stateMachine cancelTransit": {
+		"description": "模板: 阻止状态机迁移",
+		"prefix": "temp stateMachine cancelTransit",
+		"body": [
+			"self.context.setParam('cancelTransit', true);"
+		]
+	},
+	// 状态机迁移到某一状态
+	"Print stateMachine transitInvoke": {
+		"description": "模板: 状态机迁移到某一状态",
+		"prefix": [
+			"temp stateMachine transitInvoke",
+			"temp self.context.view().transitInvoke"
+		],
+		"body": [
+			"self.context.view().transitInvoke('${1:Save}');"
+		]
+	},
+}

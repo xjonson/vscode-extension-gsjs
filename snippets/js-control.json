@@ -1,0 +1,266 @@
+{
+    
+	// ------------------------------------------------------------------------------------------------------------------
+	// datagrid
+	// ------------------------------------------------------------------------------------------------------------------
+	"Print datagrid options": {
+		"description": "模板: datagrid options [请先var datagrid]",
+		"prefix": "var datagrid options",
+		"body": [
+			"var options = ${1:\\$dg1}.datagrid('options');",
+		]
+	},
+	"Print datagrid": {
+		"description": "声明: datagrid",
+		"prefix": "var datagrid",
+		"body": [
+			"var ${1:\\$dg1} = $('#${2:XDataGrid1}');",
+		]
+	},
+	"Print datagrid getRows": {
+		"description": "声明: datagrid 当前页所有行 [请先var datagrid]",
+		"prefix": "var datagrid get rows",
+		"body": [
+			"var allRows = ${1:\\$dg1}.datagrid('getRows');",
+		]
+	},
+	"Print datagrid getCheckRowsArr": {
+		"description": "声明: datagrid 获取checked行 [请先var datagrid]",
+		"prefix": "var datagrid get checked row",
+		"body": [
+			"var checkRowsArr = ${1:\\$dg1}.datagrid('getChecked');",
+		]
+	},
+	"Print datagrid getSelectRow": {
+		"description": "声明: datagrid 获取selected行 [请先var datagrid]",
+		"prefix": "var datagrid get selected row",
+		"body": [
+			"var selectRow = ${1:\\$dg1}.datagrid('getSelected');",
+		]
+	},
+	"Print datagrid selectARow": {
+		"description": "模板: datagrid 选中某一行 [请先var datagrid]",
+		"prefix": "temp datagrid select a row",
+		"body": [
+			"${1:\\$dg1}.datagrid('checkRow', ${2:index});",
+		]
+	},
+	"Print datagrid getSelectedIndex": {
+		"description": "模板: datagrid 获取选中行index [请先var datagrid]",
+		"prefix": "temp datagrid getSelectedIndex",
+		"body": [
+			"${1:\\$dg1}.datagrid('getSelectedIndex');",
+		]
+	},
+	"Print datagrid unselectAll": {
+		"description": "模板: datagrid 清空选择 [请先var datagrid]",
+		"prefix": "temp datagrid unselectAll",
+		"body": [
+			"${1:\\$dg1}.datagrid('unselectAll');",
+		]
+	},
+	"Print datagrid endEditAndRefreshRow": {
+		"description": "模板: datagrid 结束编辑一行并刷新 [请先var datagrid]",
+		"prefix": "temp datagrid endEdit and refreshRow",
+		"body": [
+			"${1:\\$dg1}.datagrid('endEdit', ${2:index}).datagrid('refreshRow', ${2:index});",
+		]
+	},
+	"Print datagrid onBeforeSelect": {
+		"description": "模板: datagrid 行选择前 [请先var datagrid options]",
+		"prefix": "temp datagrid on beforeSelect",
+		"body": [
+			"${1:options}.onBeforeSelect(function (rowindex, rowData) {$2})",
+		]
+	},
+	"Print datagrid onCheck": {
+		"description": "模板: datagrid 行选中前 [请先var datagrid options]",
+		"prefix": "temp datagrid on check",
+		"body": [
+			"${1:options}.onCheck(function (rowindex, rowData) {$2});",
+		]
+	},
+	// 模板: datagrid 单元格编辑前
+	"Print datagrid beforeEditCell": {
+		"description": "模板: datagrid 单元格编辑前 [请先var datagrid]",
+		"prefix": "temp datagrid beforeEditCell",
+		"body": [
+			"${1:\\$dg1}.on('beforeEditCell', function (e, opts) {",
+			"\tif (opts.field == '$2') {$3}",
+			"}"
+		]
+	},
+	// 模板: datagrid 单元格编辑后
+	"Print datagrid onAfterEdit": {
+		"description": "模板: datagrid 单元格编辑后 [请先var datagrid]",
+		"prefix": "temp datagrid onAfterEdit",
+		"body": [
+			"${1:\\$dg1}.on('onAfterEdit', function (e, rowIndex, rowData, changes) {",
+			"\tfor (key in changes) {$2}",
+			"}"
+		]
+	},
+	// ------------------------------------------------------------------------------------------------------------------
+	// smartDictLookup：智能帮助不建议声明变量，每次调用使用$获取ID即可
+	// ------------------------------------------------------------------------------------------------------------------
+	"Print smartDictLookup options": {
+		"description": "声明: 帮助 options",
+		"prefix": "var smartdictlookup options",
+		"body": [
+			"var ${2:options} = $('#${2:XSmartDictLookup1}').adplookupbox('options');"
+		]
+	},
+	// 获取帮助过滤条件，用于帮助前过滤
+	"Print smartDictLookup Condition": {
+		"description": "模板: 帮助 过滤条件",
+		"prefix": "temp smartdictlookup condition",
+		"body": [
+			"var adp = $('#${2:XSmartDictLookup1}').adplookupbox('options').adp;",
+			"adp.condition = condition;",
+		]
+	},
+	// 创建帮助前服务端扩展的参数对象，用于帮助前过滤
+	"Print adpHelp.createLookupParam": {
+		"description": "模板: 帮助 创建帮助前服务端扩展的参数对象",
+		"prefix": "temp smartdictlookup taurus.adpHelp.createLookupParam",
+		"body": [
+			"var adp = $('#${1:XSmartDictLookup1}').adplookupbox('options').adp;",
+			"adp.lookupParams = taurus.adpHelp.createLookupParam('$2', '$2$3', '$4', '$5');",
+		]
+	},
+	// 帮助手动赋值
+	"Print smartDictLookup setValue": {
+		"description": "模板: 帮助 赋值",
+		"prefix": "temp smartdictlookup set value&text",
+		"body": [
+			"$('#${1:XSmartDictLookup1}').adplookupbox('setText', '$2');",
+			"$('#${1:XSmartDictLookup1}').adplookupbox('setValue', '$3');",
+		]
+	},
+	// 帮助取值
+	"Print smartDictLookup getValue": {
+		"description": "模板: 帮助 取值",
+		"prefix": "var smartdictlookup get value&text",
+		"body": [
+			"var ${1:value} = $('#${2:XSmartDictLookup1}').adplookupbox('getValue');",
+			"var ${3:text} = $('#${2:XSmartDictLookup1}').adplookupbox('getText');",
+		]
+	},
+	// 获取帮助当前选中的数据源
+	"Print smartDictLookup getSelectData": {
+		"description": "模板: 帮助 获取当前选中行的数据源",
+		"prefix": "var smartdictlookup get rowData",
+		"body": [
+			"var ${1:helpDataArr} = $('#${2:XSmartDictLookup1}').adplookupbox('textbox').data().rowData;",
+		]
+	},
+	// 手动清空帮助
+	"Print smartDictLookup clear": {
+		"description": "模板: 帮助 清空",
+		"prefix": "temp smartdictlookup clear",
+		"body": [
+			"$('#${2:XSmartDictLookup1}').adplookupbox('clear')",
+		]
+	},
+	// 设置帮助只读
+	"Print smartDictLookup readonly": {
+		"description": "模板: 帮助 设置只读",
+		"prefix": "temp smartdictlookup readonly",
+		"body": [
+			"$('#${2:XSmartDictLookup1}').adplookupbox('readonly', ${1:true})",
+		]
+	},
+	// 设置帮助必填
+	"Print smartDictLookup required": {
+		"description": "模板: 帮助 设置必填",
+		"prefix": "temp smartdictlookup required",
+		"body": [
+			"$('#${2:XSmartDictLookup1}').adplookupbox('textbox').validatebox('options').required = true;"
+		]
+	},
+	// 绑定帮助焦点事件
+	"Print smartDictLookup onFocus": {
+		"description": "模板:  绑定焦点事件",
+		"prefix": "temp smartdictlookup on focus&blur",
+		"body": [
+			"$('#${1:XSmartDictLookup1}').adplookupbox('textbox').on('focus', function () {$2}).on('blur', function () {$3});"
+		]
+	},
+	// 绑定点击帮助事件，用于帮助打开自定义表单
+	"Print smartDictLookup alertIframe": {
+		"description": "模板: 帮助 点击帮助事件",
+		"prefix": "temp smartdictlookup on click",
+		"body": [
+			"$('#${1:XSmartDictLookup1}').data('adplookupbox').\\$arrow.off('click').on('click.${2:AnyWordButMust}', function () {",
+			"\t// temp iframe dialog",
+			"})"
+		]
+	},
+	// ------------------------------------------------------------------------------------------------------------------
+	// select 下拉选择框
+	// ------------------------------------------------------------------------------------------------------------------
+	// 下拉框options
+	"Print selector options": {
+		"description": "声明: 下拉选择框 options",
+		"prefix": "var selector options",
+		"body": [
+			"var options = $('#${1:XSelector1}').combo2('options');"
+		]
+	},
+	// 下拉框手动赋值
+	"Print selector setValue": {
+		"description": "模板: 下拉选择框 赋值",
+		"prefix": "var selector set value&text",
+		"body": [
+			"$('#${1:XSelector1}').combo2('setValue', '$2');",
+			"$('#${1:XSelector1}').combo2('setText', '$3');",
+		]
+	},
+	// 下拉框取值
+	"Print selector getValue": {
+		"description": "模板: 下拉选择框 取值",
+		"prefix": "var selector get value&text",
+		"body": [
+			"var ${1:value} = $('#${2:XSelector1}').combo2('getValue');",
+			"var ${3:text} = $('#${2:XSelector1}').combo2('getText');",
+		]
+	},
+	// ------------------------------------------------------------------------------------------------------------------
+	// my97datebox 日期控件
+	// ------------------------------------------------------------------------------------------------------------------
+	// 日期控件options
+	"Print my97datebox options": {
+		"description": "声明: 日期控件 options",
+		"prefix": "var my97datebox options",
+		"body": [
+			"var options = $('#${1:My97Datebox1}').data().my97.options;"
+		]
+	},
+	// ------------------------------------------------------------------------------------------------------------------
+	// numberbox 数值控件
+	// ------------------------------------------------------------------------------------------------------------------
+	// 数值输入框options
+	"Print numberbox options": {
+		"description": "声明: 数值控件 options",
+		"prefix": "var calculator options",
+		"body": [
+			"var options = $('#${1:$XCalculator1}').numberbox('options');"
+		]
+	},
+	// 数值输入框手动赋值
+	"Print numberbox setValue": {
+		"description": "模板: 数值控件 赋值",
+		"prefix": "var numberbox set value",
+		"body": [
+			"$('#${1:XCalculator1}').numberbox('setValue', $2);"
+		]
+	},
+	// 数值输入框取值
+	"Print numberbox getValue": {
+		"description": "模板: 数值控件 取值",
+		"prefix": "var numberbox get value",
+		"body": [
+			"var ${1:number} = $('#${2:XCalculator1}').numberbox('getValue');"
+		]
+	},
+}

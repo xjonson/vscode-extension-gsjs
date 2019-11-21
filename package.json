@@ -3,7 +3,7 @@
   "displayName": "GSJS",
   "description": "A VSCode extension for GS",
   "keywords": ["gs", "gsjs"],
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"publisher": "jonson",
 	"icon": "images/icon.png",
   "engines": {
@@ -26,7 +26,22 @@
     }],
     "snippets": [{
       "language": "javascript",
-      "path": "./snippets/javascript.json"
+      "path": "./snippets/js-common.json"
+    },{
+      "language": "javascript",
+      "path": "./snippets/js-card.json"
+    },{
+      "language": "javascript",
+      "path": "./snippets/js-list.json"
+    },{
+      "language": "javascript",
+      "path": "./snippets/js-gsp.json"
+    },{
+      "language": "javascript",
+      "path": "./snippets/js-zj.json"
+    },{
+      "language": "javascript",
+      "path": "./snippets/js-control.json"
     }]
   },
   "scripts": {

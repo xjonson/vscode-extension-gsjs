@@ -1,9 +1,16 @@
 # Change Log
 
-All notable changes to the "gsjs" extension will be documented in this file.
+## 2019/11/21 v0.0.7
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+拆分snippet大文件为：
 
-## [Unreleased]
+- js-common：公共
+- js-gsp：平台
+- js-list：列表
+- js-card：卡片
+- js-zj：资金
+- js-control：控件
 
-- Initial release
+## 2019/11/21 v0.0.6
+
+支持67个Snippet提示

@@ -1,0 +1,45 @@
+{
+    
+	// ------------------------------------------------------------------------------------------------------------------
+	// list
+	// ------------------------------------------------------------------------------------------------------------------
+	"Print get listDSPeek": {
+		"description": "声明: 列表数据源Peek",
+		"prefix": "var listDataSource.peek",
+		"body": [
+			"var listDataSourcePeek = self.listInstance().dataSource.tables('$1').peek();"
+		]
+	},
+	"Print listDS": {
+		"description": "声明: 列表数据源",
+		"prefix": "var listDataSource",
+		"body": [
+			"var listDataSource = self.listInstance().dataSource;",
+			"var ds$1 = listDataSource.tables('$1');",
+			"var listCurrentItem = ds$1.defaultView().currentItem;",
+		]
+	},
+	"Print listDS getValue": {
+		"description": "声明: 列表数据源 获取字段值 [请先var listDataSource]",
+		"prefix": "var listDataSource getValue",
+		"body": [
+			"var str$2 = ds$1.rows(0).getValue('$1_$2');",
+			"var str$2 = listCurrentItem['$1_$2']();"
+		]
+	},
+	"Print listDS setValue": {
+		"description": "模板: 列表数据源 设置字段值 [请先var listDataSource]",
+		"prefix": "temp list dataSource setValue",
+		"body": [
+			"ds$1.rows(0).setValue('$1_$2', '$3');",
+			"currentItem.setValue('$1_$2', $3);"
+		]
+	},
+	"Print get listDSTotalCount": {
+		"description": "声明: 列表数据源 获取总记录数 [请先var listDataSource]",
+		"prefix": "var listDataSource totalCount",
+		"body": [
+			"var totalCount = ds$1.defaultView().totalCount();"
+		]
+	},
+}

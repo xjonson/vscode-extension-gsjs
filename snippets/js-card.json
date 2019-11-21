@@ -1,0 +1,37 @@
+{
+	// ------------------------------------------------------------------------------------------------------------------
+	// card
+	// ------------------------------------------------------------------------------------------------------------------
+	"Print get cardDSPeek": {
+		"description": "声明: 卡片数据源Peek",
+		"prefix": "var card dataSourcePeek",
+		"body": [
+			"var cardDataSourcePeek = self.cardInstance().dataSource.tables('$1').peek();",
+		]
+	},
+	"Print get cardDS": {
+		"description": "声明: 卡片数据源",
+		"prefix": "var cardDataSource",
+		"body": [
+			"var cardDataSource = self.cardInstance().dataSource;",
+			"var ds$1 = cardDataSource.tables('$1');",
+			"var cardCurrentItem = ds$1.defaultView().currentItem;"
+		]
+	},
+	"Print cardDS getValue": {
+		"description": "声明: 卡片数据源 获取字段值 [请先var cardDataSource]",
+		"prefix": "var cardDataSource getValue",
+		"body": [
+			"var str$2 = ds$1.rows(0).getValue('$1_$2');",
+			"var str$2 = cardCurrentItem['$1_$2']();"
+		]
+	},
+	"Print cardDS setValue": {
+		"description": "模板: 卡片数据源 获取字段值 [请先var cardDataSource]",
+		"prefix": "temp cardDataSource sefValue",
+		"body": [
+			"ds$1.rows(0).setValue('$1_$2', '$3');",
+			"currentItem.setValue('$1_$2', '$3');"
+		]
+	},
+}

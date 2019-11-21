@@ -1,0 +1,55 @@
+/*
+ * @Author: JonsonXu
+ * @Date: 2019-11-21 14:44:29
+ * @Last Modified by: JonsonXu
+ * @Last Modified time: 2019-11-21 19:50:48
+ */
+ {
+	"Print self": {
+		"description": "声明: self",
+		"prefix": "var self",
+		"body": [
+			"var self = this;"
+		]
+	},
+	// ------------------------------------------------------------------------------------------------------------------
+	// iframe&dialog
+	// ------------------------------------------------------------------------------------------------------------------
+	// 父子表单弹框模板
+	"Print iframeDialog": {
+		"description": "模板: 父子表单弹框模板",
+		"prefix": "temp iframe dialog",
+		"body": [
+			"if ($('#${1:IFrame1Dialog}').data('dialog')) {",
+			"\t$('#${1:IFrame1Dialog}').dialog('show').then(function() {$4})",
+			"}",
+			"else {",
+			"\tvar dlg = $('#${1:IFrame1Dialog}').dialog({",
+			"\t\twidth: ${2:7}00,",
+			"\t\theight: ${3:4}00,",
+			"\t\tonLoad: function () {$4}",
+			"\t})",
+			"\tdlg.dialog('show');",
+			"}",
+		]
+	},
+	// ------------------------------------------------------------------------------------------------------------------
+	// jQuery&easyui
+	// ------------------------------------------------------------------------------------------------------------------
+	// 注册框架关闭前事件
+	"Print onFrameClose": {
+		"description": "模板: 注册框架关闭前事件",
+		"prefix": "temp on frameclose",
+		"body": [
+			"$(document).on('frameclose', function () {$1})"
+		]
+	},
+	// 注册框架显示前事件
+	"Print onFrameShow": {
+		"description": "模板: 注册框架显示前事件",
+		"prefix": "temp on frameshow",
+		"body": [
+			"$(document).on('frameshow', function () {$1})"
+		]
+	},
+}
