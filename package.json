@@ -1,9 +1,9 @@
 {
   "name": "gsjs",
-  "displayName": "gsjs",
-  "description": "a vscode extension for gs",
-  "keywords": ["gs", "gsjs", "inspur"],
-	"version": "0.0.5",
+  "displayName": "GSJS",
+  "description": "A VSCode extension for GS",
+  "keywords": ["gs", "gsjs"],
+	"version": "0.0.6",
 	"publisher": "jonson",
 	"icon": "images/icon.png",
   "engines": {

@@ -2,7 +2,7 @@
  * @Author: JonsonXu
  * @Date: 2019-11-21 14:44:29
  * @Last Modified by: JonsonXu
- * @Last Modified time: 2019-11-21 15:17:17
+ * @Last Modified time: 2019-11-21 18:57:22
  */
  {
 	"Print Demo": {
@@ -72,6 +72,7 @@
 			""
 		]
 	},
+	// 模板: 平台打开新tab页方法
 	"Print gsp.rtf.func.openUrl": {
 		"description": "模板: 平台打开新tab页方法",
 		"prefix": "temp gsp.rtf.func.openUrl",
@@ -80,6 +81,14 @@
 			"var id = ${2: createGuid()};",
 			"var url = '/cwbase/web/zj/$3';",
 			"gsp.rtf.func.openUrl({ id: id, tabName: tabName, url: url, reload: true });"
+		]
+	},
+	// 模板: 平台获取当前业务操作ID
+	"Print gsp.rtf.context.get('bizOpId')": {
+		"description": "模板: 平台获取当前业务操作ID",
+		"prefix": "var gsp.rtf.context.get('bizOpId')",
+		"body": [
+			"var bizOpId = gsp.rtf.context.get('bizOpId');"
 		]
 	},
 	// ------------------------------------------------------------------------------------------------------------------
@@ -239,7 +248,6 @@
 		"description": "声明: self",
 		"prefix": "var self",
 		"body": [
-			"${1:}",
 			"var self = this;"
 		]
 	},
@@ -318,35 +326,41 @@
 	// ------------------------------------------------------------------------------------------------------------------
 	"Print get listDSPeek": {
 		"description": "声明: 列表数据源Peek",
-		"prefix": "var listDataSourcePeek",
+		"prefix": "var listDataSource.peek",
 		"body": [
 			"var listDataSourcePeek = self.listInstance().dataSource.tables('$1').peek();"
 		]
 	},
-	"Print get listDS": {
-		"description": "声明: 列表数据源 获取字段值",
+	"Print listDS": {
+		"description": "声明: 列表数据源",
 		"prefix": "var listDataSource",
 		"body": [
 			"var listDataSource = self.listInstance().dataSource;",
 			"var ds$1 = listDataSource.tables('$1');",
 			"var listCurrentItem = ds$1.defaultView().currentItem;",
+		]
+	},
+	"Print listDS getValue": {
+		"description": "声明: 列表数据源 获取字段值 [请先var listDataSource]",
+		"prefix": "var listDataSource getValue",
+		"body": [
 			"var str$2 = ds$1.rows(0).getValue('$1_$2');",
 			"var str$2 = listCurrentItem['$1_$2']();"
 		]
 	},
-	"Print set listDS": {
-		"description": "声明: 列表数据源 设置字段值",
-		"prefix": "var list dataSource currentItem",
+	"Print listDS setValue": {
+		"description": "模板: 列表数据源 设置字段值 [请先var listDataSource]",
+		"prefix": "temp list dataSource setValue",
 		"body": [
 			"ds$1.rows(0).setValue('$1_$2', '$3');",
 			"currentItem.setValue('$1_$2', $3);"
 		]
 	},
 	"Print get listDSTotalCount": {
-		"description": "声明: 列表数据源 获取总记录数",
+		"description": "声明: 列表数据源 获取总记录数 [请先var listDataSource]",
 		"prefix": "var listDataSource totalCount",
 		"body": [
-			"var totalCount = listDefaultView.totalCount();"
+			"var totalCount = ds$1.defaultView().totalCount();"
 		]
 	},
 	// ------------------------------------------------------------------------------------------------------------------
@@ -360,29 +374,35 @@
 		]
 	},
 	"Print get cardDS": {
-		"description": "声明: 卡片数据源 获取字段值",
+		"description": "声明: 卡片数据源",
 		"prefix": "var cardDataSource",
 		"body": [
 			"var cardDataSource = self.cardInstance().dataSource;",
 			"var ds$1 = cardDataSource.tables('$1');",
-			"var cardCurrentItem = ds$1.defaultView().currentItem;",
+			"var cardCurrentItem = ds$1.defaultView().currentItem;"
+		]
+	},
+	"Print cardDS getValue": {
+		"description": "声明: 卡片数据源 获取字段值 [请先var cardDataSource]",
+		"prefix": "var cardDataSource getValue",
+		"body": [
 			"var str$2 = ds$1.rows(0).getValue('$1_$2');",
 			"var str$2 = cardCurrentItem['$1_$2']();"
 		]
 	},
-	"Print set cardDS": {
-		"description": "声明: 卡片数据源 获取字段值",
-		"prefix": "var cardDataSource",
+	"Print cardDS setValue": {
+		"description": "模板: 卡片数据源 获取字段值 [请先var cardDataSource]",
+		"prefix": "temp cardDataSource sefValue",
 		"body": [
 			"ds$1.rows(0).setValue('$1_$2', '$3');",
-			"currentItem.setValue('$1_$2', '$3');",
+			"currentItem.setValue('$1_$2', '$3');"
 		]
 	},
 	// ------------------------------------------------------------------------------------------------------------------
 	// datagrid
 	// ------------------------------------------------------------------------------------------------------------------
 	"Print datagrid options": {
-		"description": "模板: datagrid options",
+		"description": "模板: datagrid options [请先var datagrid]",
 		"prefix": "var datagrid options",
 		"body": [
 			"var options = ${1:\\$dg1}.datagrid('options');",
@@ -396,88 +416,103 @@
 		]
 	},
 	"Print datagrid getRows": {
-		"description": "声明: datagrid 当前页所有行",
+		"description": "声明: datagrid 当前页所有行 [请先var datagrid]",
 		"prefix": "var datagrid get rows",
 		"body": [
 			"var allRows = ${1:\\$dg1}.datagrid('getRows');",
 		]
 	},
 	"Print datagrid getCheckRowsArr": {
-		"description": "声明: datagrid 获取checked行",
+		"description": "声明: datagrid 获取checked行 [请先var datagrid]",
 		"prefix": "var datagrid get checked row",
 		"body": [
 			"var checkRowsArr = ${1:\\$dg1}.datagrid('getChecked');",
 		]
 	},
 	"Print datagrid getSelectRow": {
-		"description": "声明: datagrid 获取selected行",
+		"description": "声明: datagrid 获取selected行 [请先var datagrid]",
 		"prefix": "var datagrid get selected row",
 		"body": [
 			"var selectRow = ${1:\\$dg1}.datagrid('getSelected');",
 		]
 	},
 	"Print datagrid selectARow": {
-		"description": "模板: datagrid 选中某一行",
+		"description": "模板: datagrid 选中某一行 [请先var datagrid]",
 		"prefix": "temp datagrid select a row",
 		"body": [
 			"${1:\\$dg1}.datagrid('checkRow', ${2:index});",
 		]
 	},
 	"Print datagrid getSelectedIndex": {
-		"description": "模板: datagrid 获取选中行index",
+		"description": "模板: datagrid 获取选中行index [请先var datagrid]",
 		"prefix": "temp datagrid getSelectedIndex",
 		"body": [
 			"${1:\\$dg1}.datagrid('getSelectedIndex');",
 		]
 	},
+	"Print datagrid unselectAll": {
+		"description": "模板: datagrid 清空选择 [请先var datagrid]",
+		"prefix": "temp datagrid unselectAll",
+		"body": [
+			"${1:\\$dg1}.datagrid('unselectAll');",
+		]
+	},
+	"Print datagrid endEditAndRefreshRow": {
+		"description": "模板: datagrid 结束编辑一行并刷新 [请先var datagrid]",
+		"prefix": "temp datagrid endEdit and refreshRow",
+		"body": [
+			"${1:\\$dg1}.datagrid('endEdit', ${2:index}).datagrid('refreshRow', ${2:index});",
+		]
+	},
 	"Print datagrid onBeforeSelect": {
-		"description": "模板: datagrid 行选择前",
+		"description": "模板: datagrid 行选择前 [请先var datagrid options]",
 		"prefix": "temp datagrid on beforeSelect",
 		"body": [
 			"${1:options}.onBeforeSelect(function (rowindex, rowData) {$2})",
 		]
 	},
 	"Print datagrid onCheck": {
-		"description": "模板: datagrid 行选中前",
+		"description": "模板: datagrid 行选中前 [请先var datagrid options]",
 		"prefix": "temp datagrid on check",
 		"body": [
-			"${1:options}.onCheck(function (rowindex, rowData) {$2})",
+			"${1:options}.onCheck(function (rowindex, rowData) {$2});",
 		]
 	},
+	// 模板: datagrid 单元格编辑前
 	"Print datagrid beforeEditCell": {
-		"description": "模板: datagrid 单元格编辑前",
+		"description": "模板: datagrid 单元格编辑前 [请先var datagrid]",
 		"prefix": "temp datagrid beforeEditCell",
 		"body": [
-			"${1:\\$dg1}.on('beforeEditCell', function (rowIndex, rowData) {",
-			"\tif (rowData.field == '$2') {$3}",
+			"${1:\\$dg1}.on('beforeEditCell', function (e, opts) {",
+			"\tif (opts.field == '$2') {$3}",
 			"}"
 		]
 	},
+	// 模板: datagrid 单元格编辑后
 	"Print datagrid onAfterEdit": {
-		"description": "模板: datagrid 单元格编辑后",
+		"description": "模板: datagrid 单元格编辑后 [请先var datagrid]",
 		"prefix": "temp datagrid onAfterEdit",
 		"body": [
-			"$('#${1:XDataGrid1}').on('onAfterEdit', function (e, rowIndex, rowData, changes) {",
+			"${1:\\$dg1}.on('onAfterEdit', function (e, rowIndex, rowData, changes) {",
 			"\tfor (key in changes) {$2}",
 			"}"
 		]
 	},
-	// $dg.datagrid('unselectAll'); 全部取消全选
 	// ------------------------------------------------------------------------------------------------------------------
-	// smartDictLookup
+	// smartDictLookup：智能帮助不建议声明变量，每次调用使用$获取ID即可
 	// ------------------------------------------------------------------------------------------------------------------
 	"Print smartDictLookup options": {
-		"description": "模板: 智能帮助 options",
-		"prefix": "temp smartdictlookup options",
+		"description": "声明: 智能帮助 options",
+		"prefix": "var smartdictlookup options",
 		"body": [
-			"var options = $('#${1:XSmartDictLookup1}').adplookupbox('options');"
+			"var ${2:options} = $('#${2:XSmartDictLookup1}').adplookupbox('options');"
 		]
 	},
 	"Print smartDictLookup Condition": {
 		"description": "模板: 智能帮助 过滤条件",
 		"prefix": "temp smartdictlookup condition",
 		"body": [
-			"var adp = $('#${1:XSmartDictLookup1}').adplookupbox('options').adp;",
+			"var adp = $('#${2:XSmartDictLookup1}').adplookupbox('options').adp;",
 			"adp.condition = condition;",
 		]
 	},
@@ -497,22 +532,29 @@
 			"var ${3:text} = $('#${2:XSmartDictLookup1}').adplookupbox('getText');",
 		]
 	},
+	"Print smartDictLookup getSelectData": {
+		"description": "模板: 智能帮助 获取当前选中行的数据源",
+		"prefix": "var smartdictlookup get rowData",
+		"body": [
+			"var ${1:helpDataArr} = $('#${2:XSmartDictLookup1}').adplookupbox('textbox').data().rowData;",
+		]
+	},
 	"Print smartDictLookup clear": {
-		"description": "模板: 智能帮助 清空",
+		"description": "模板: 智能帮助 设置清空",
 		"prefix": "temp smartdictlookup clear",
 		"body": [
 			"$('#${2:XSmartDictLookup1}').adplookupbox('clear')",
 		]
 	},
 	"Print smartDictLookup readonly": {
-		"description": "模板: 智能帮助 只读",
+		"description": "模板: 智能帮助 设置只读",
 		"prefix": "temp smartdictlookup readonly",
 		"body": [
 			"$('#${2:XSmartDictLookup1}').adplookupbox('readonly', ${1:true})",
 		]
 	},
 	"Print smartDictLookup required": {
-		"description": "模板: 智能帮助 必填",
+		"description": "模板: 智能帮助 设置必填",
 		"prefix": "temp smartdictlookup required",
 		"body": [
 			"$('#${2:XSmartDictLookup1}').adplookupbox('textbox').validatebox('options').required = true;"
@@ -522,14 +564,14 @@
 		"description": "模板: 智能帮助 绑定焦点事件",
 		"prefix": "temp smartdictlookup on focus&blur",
 		"body": [
-			"$('#${1:XSmartDictLookup1}').adplookupbox('textbox').on('focus', function() {$2}).on('blur', function() {$3});"
+			"$('#${1:XSmartDictLookup1}').adplookupbox('textbox').on('focus', function () {$2}).on('blur', function () {$3});"
 		]
 	},
 	"Print smartDictLookup alertIframe": {
-		"description": "模板: 智能帮助 点击帮助弹出自定义表单",
-		"prefix": "temp smartdictlookup on click alert iframe",
+		"description": "模板: 智能帮助 点击帮助事件",
+		"prefix": "temp smartdictlookup on click",
 		"body": [
-			"$('#${1:XSmartDictLookup1}').data('adplookupbox').\\$arrow.off('click').on('click.${2:AnyWordButMust}', function() {",
+			"$('#${1:XSmartDictLookup1}').data('adplookupbox').\\$arrow.off('click').on('click.${2:AnyWordButMust}', function () {",
 			"\t// temp iframe dialog",
 			"})",
 		]
