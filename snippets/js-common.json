@@ -2,7 +2,7 @@
  * @Author: JonsonXu
  * @Date: 2019-11-21 14:44:29
  * @Last Modified by: JonsonXu
- * @Last Modified time: 2019-11-21 19:50:48
+ * @Last Modified time: 2019-11-22 16:55:34
  */
  {
 	"Print self": {
@@ -36,7 +36,7 @@
 	// ------------------------------------------------------------------------------------------------------------------
 	// jQuery&easyui
 	// ------------------------------------------------------------------------------------------------------------------
-	// 注册框架关闭前事件
+	// 注册框架关闭前事件，即当前tab页关闭事件
 	"Print onFrameClose": {
 		"description": "模板: 注册框架关闭前事件",
 		"prefix": "temp on frameclose",
@@ -44,12 +44,20 @@
 			"$(document).on('frameclose', function () {$1})"
 		]
 	},
-	// 注册框架显示前事件
+	// 注册框架显示前事件，即当前tab页显示事件
 	"Print onFrameShow": {
 		"description": "模板: 注册框架显示前事件",
 		"prefix": "temp on frameshow",
 		"body": [
 			"$(document).on('frameshow', function () {$1})"
+		]
+	},
+	// 金额大写
+	"Print toChineseMoney": {
+		"description": "模板: 金额大写",
+		"prefix": "var toChineseMoney",
+		"body": [
+			"var ${1:amountTop} = toChineseMoney(${2:1111});"
 		]
 	},
 }

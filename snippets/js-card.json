@@ -6,7 +6,7 @@
 		"description": "声明: 卡片数据源Peek",
 		"prefix": "var card dataSourcePeek",
 		"body": [
-			"var cardDataSourcePeek = self.cardInstance().dataSource.tables('$1').peek();",
+			"var cardDataSourcePeek = self.cardInstance().dataSource.peek();",
 		]
 	},
 	"Print get cardDS": {

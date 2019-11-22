@@ -233,7 +233,28 @@
 		"description": "声明: 日期控件 options",
 		"prefix": "var my97datebox options",
 		"body": [
-			"var options = $('#${1:My97Datebox1}').data().my97.options;"
+			"var options = $('#${1:My97Datebox1}').my97datebox('options');"
+		]
+	},
+	"Print my97datebox setValue": {
+		"description": "模板: 日期控件 setValue",
+		"prefix": "temp my97datebox options",
+		"body": [
+			"$('#${1:My97Datebox1}').my97datebox('setValue', '$2');"
+		]
+	},
+	"Print my97datebox getValue": {
+		"description": "模板: 日期控件 getValue [获取储存格式值]",
+		"prefix": "var my97datebox options",
+		"body": [
+			"var ${1:dateValue} = $('#${2:My97Datebox1}').my97datebox('getValue');"
+		]
+	},
+	"Print my97datebox getVal": {
+		"description": "模板: 日期控件 getVal [获取显示格式值]",
+		"prefix": "var my97datebox getVal",
+		"body": [
+			"var ${1:dateVal} = $('#${2:My97Datebox1}').val();"
 		]
 	},
 	// ------------------------------------------------------------------------------------------------------------------

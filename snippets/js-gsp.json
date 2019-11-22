@@ -3,9 +3,9 @@
 	// ------------------------------------------------------------------------------------------------------------------
 	// GSP
 	// ------------------------------------------------------------------------------------------------------------------
-	// template: gsp.application.invoke
+	// 模板: 平台 不同表单方法之间调用
 	"Print gsp.application.invoke": {
-		"description": "模板: gsp.application.invoke 不同表单方法之间调用",
+		"description": "模板: 平台 不同表单方法之间调用",
 		"prefix": "temp gsp.application.invoke",
 		"body": [
 			"gsp.application.invoke({",
@@ -16,9 +16,9 @@
 			"});"
 		]
 	},
-	// template: self.context.invoke
+	// 模板 平台 同表单方法之间调用
 	"Print self.context.invoke": {
-		"description": "模板: self.context.invoke 同表单方法之间调用",
+		"description": "模板: 平台 同表单方法之间调用",
 		"prefix": "temp self.context.invoke",
 		"body": [
 			"self.context.invoke({",
@@ -28,8 +28,9 @@
 			"});"
 		]
 	},
+	// 模板 平台 组织过滤条件字符串
 	"Print conditionStr": {
-		"description": "模板: 组织平台过滤条件字符串",
+		"description": "模板: 平台 组织过滤条件字符串",
 		"prefix": "temp condition string",
 		"body": [
 			"var conditionArr = [];",
@@ -53,14 +54,7 @@
 			"var condition = JSON.stringify(conditionArr);"
 		]
 	},
-	"Print conditionFunction": {
-		"description": "模板: 组织平台过滤条件函数",
-		"prefix": "temp conditon function",
-		"body": [
-			""
-		]
-	},
-	// 模板: 平台打开新tab页方法
+	// 模板: 平台 打开新tab页方法
 	"Print gsp.rtf.func.openUrl": {
 		"description": "模板: 平台打开新tab页方法",
 		"prefix": "temp gsp.rtf.func.openUrl",
@@ -71,26 +65,34 @@
 			"gsp.rtf.func.openUrl({ id: id, tabName: tabName, url: url, reload: true });"
 		]
 	},
-	// 模板: 平台获取当前业务操作ID
-	"Print gsp.rtf.context.get('bizOpId')": {
-		"description": "模板: 平台获取当前业务操作ID",
+	// 模板: 平台 获取上下文变量
+	"Print gsp.rtf.context.get": {
+		"description": "模板: 平台 从上下文中获取参数 [例：当前业务操作ID]",
 		"prefix": "var gsp.rtf.context.get('bizOpId')",
 		"body": [
-			"var bizOpId = gsp.rtf.context.get('bizOpId');"
+			"var ${1:bizOpId} = gsp.rtf.context.get('${1:bizOpId}');"
+		]
+	},
+	// 声明: 平台 获取URL参数
+	"Print gsp.rtf.query.get": {
+		"description": "声明: 平台 获取URL参数",
+		"prefix": "var gsp.rtf.query.get",
+		"body": [
+			"var $1 = gsp.rtf.query.get('$2');"
 		]
 	},
 	// ------------------------------------------------------------------------------------------------------------------
 	// ADP
 	// ------------------------------------------------------------------------------------------------------------------
-    // adp.number.toChineseMoney(123123)
-    
-	"Print getUtlParam": {
+	// 声明: 获取URL参数
+	"Print getUrlParam": {
 		"description": "声明: 获取URL参数",
 		"prefix": "var getUrlParam",
 		"body": [
 			"var $1 = self.getUrlParam('$1');"
 		]
 	},
+	// 声明: 获取全局变量
 	"Print getGlobalObj": {
 		"description": "声明: 获取全局变量",
 		"prefix": "var getGlobalObj",
@@ -98,6 +100,7 @@
 			"var $1 = self.getGlobalObj('$2');"
 		]
 	},
+	// 声明: 设置全局变量
 	"Print setGlobalObj": {
 		"description": "声明: 设置全局变量",
 		"prefix": "setGlobalObj",
@@ -106,6 +109,7 @@
 			"self.setGlobalObj('$1', $2);"
 		]
 	},
+	// 声明: 更新全局变量
 	"Print updateGlobalObj": {
 		"description": "声明: 更新全局变量",
 		"prefix": "updateGlobalObj",
@@ -113,6 +117,7 @@
 			"self.updateGlobalObj('$1', '$2', true);"
 		]
 	},
+	// 声明: 获取表单上下文参数
 	"Print getParam": {
 		"description": "声明: 获取表单上下文参数",
 		"prefix": "var self.context.getParam",

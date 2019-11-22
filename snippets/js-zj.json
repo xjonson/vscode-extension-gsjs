@@ -18,6 +18,7 @@
 			"\t})"
 		],
 	},
+	// taurus.aop.invokeAOPMethod
 	"Print zj.rtf.createLockObj": {
 		"description": "声明：资金 创建服务端请求单条锁对象",
 		"prefix": "var zj.rtf.createLockObj",
@@ -85,12 +86,12 @@
 		]
 	},
 	"Print zj.formHelper.registFrameCloseLock": {
-		"description": "声明：资金 注册页面关闭解锁事件",
-		"prefix": "var zj.formHelper.registFrameCloseLock",
+		"description": "模板：资金 注册页面关闭解锁事件",
+		"prefix": "temp zj.formHelper.registFrameCloseLock",
 		"body": [
 			"var lockID = $1;",
 			"var lockObj = zj.rtf.createLockObj('ZJGX', lockID, 'R');",
-			"zj.formHelper.registFrameCloseLock(self, lockObj, $2);",
+			"zj.formHelper.registFrameCloseLock(self, lockObj, ${2:self.checkCanClose});",
 		]
 	},
 	"Print taurus.formHelper.openMenu": {
@@ -134,6 +135,24 @@
 			"zj.formHelper.confirm(${1:'确认？'}, true).then(function () {$2}).fail(function () {",
 			"\tself.context.setParam('cancelTransit', true);$3",
 			"});",
+		]
+	},
+	"Print zj.formHelper.alert": {
+		"description": "模板：资金 提示弹框",
+		"prefix": "temp zj.formHelper.alert",
+		"body": [
+			"zj.formHelper.alert(${1:成功！}).then(function () {$2})"
+		]
+	},
+	"Print zj.rtf.createHelpCondition": {
+		"description": "模板: 资金 组织过滤条件函数 [附带注释及示例]",
+		"prefix": "temp zj.rtf.createHelpCondition",
+		"body": [
+			"var condition = '[';",
+			"// 左括号，比较符，字段，数据类型，值，右括号，关联关系，是否能改变，转化大写比较，表达式类型",
+			"condition += zj.rtf.createHelpCondition(\"\", \" like \", \"${1:ZJJSDJ_XM06}\", \"String\", \"'%\"+${2:bzdbh}+\"%'\", \" and \", \"\", true, false, 1) + ','",
+			"condition += zj.rtf.createHelpCondition(\"\", \" = \", \"${3:ZJJSDJ_YWLY}\", \"String\", \"'${4:FSSC}'\", \"\", \"\", true, false, 1);",
+			"condition += ']';"
 		]
 	},
 	// ------------------------------------------------------------------------------------------------------------------
