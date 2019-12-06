@@ -125,6 +125,7 @@
 			"var str$1 = self.context.getParam('$1');"
 		]
 	},
+	// 声明: 设置表单上下文参数
 	"Print setParam": {
 		"description": "模板: 设置表单上下文参数",
 		"prefix": "self.context.setParam",
@@ -132,6 +133,7 @@
 			"self.context.setParam('$1', '$2');"
 		]
 	},
+	// 模板: self打开新tab页方法
 	"Print selfopenMenu": {
 		"description": "模板: self打开新tab页方法",
 		"prefix": "temp self openMenu",
@@ -145,6 +147,7 @@
 			"self.openMenu(tabName, url, id, opts, reload);"
 		]
 	},
+	// 声明: 获取FuncID
 	"Print getFuncId": {
 		"description": "声明: 获取FuncID",
 		"prefix": "var self.getFuncId",
@@ -152,6 +155,7 @@
 			"var funcId = self.getFuncId();"
 		]
 	},
+	// 声明: 子卡片获取父列表FuncID
 	"Print getParentFuncId": {
 		"description": "声明: 子卡片获取父列表FuncID",
 		"prefix": "var self.getParentFuncId",
@@ -181,4 +185,9 @@
 			"self.context.view().transitInvoke('${1:Save}');"
 		]
 	},
+	// ------------------------------------------------------------------------------------------------------------------
+	// gsp.core
+	// ------------------------------------------------------------------------------------------------------------------
+	// 金额格式化 金额，前缀[￥]，精确位[2]，千分位分隔符[,]
+	// gsp.core.accounting.formatMoney(1000, '', 1, ',')
 }

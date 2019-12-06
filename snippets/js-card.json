@@ -2,6 +2,7 @@
 	// ------------------------------------------------------------------------------------------------------------------
 	// card
 	// ------------------------------------------------------------------------------------------------------------------
+	// 
 	"Print get cardDSPeek": {
 		"description": "声明: 卡片数据源Peek",
 		"prefix": "var card dataSourcePeek",
@@ -9,6 +10,7 @@
 			"var cardDataSourcePeek = self.cardInstance().dataSource.peek();",
 		]
 	},
+	// 声明: 卡片数据源
 	"Print get cardDS": {
 		"description": "声明: 卡片数据源",
 		"prefix": "var cardDataSource",
@@ -18,6 +20,7 @@
 			"var cardCurrentItem = ds$1.defaultView().currentItem;"
 		]
 	},
+	// 声明: 卡片数据源 获取字段值 [请先var cardDataSource]
 	"Print cardDS getValue": {
 		"description": "声明: 卡片数据源 获取字段值 [请先var cardDataSource]",
 		"prefix": "var cardDataSource getValue",
@@ -26,6 +29,7 @@
 			"var str$2 = cardCurrentItem['$1_$2']();"
 		]
 	},
+	// 模板: 卡片数据源 获取字段值 [请先var cardDataSource]
 	"Print cardDS setValue": {
 		"description": "模板: 卡片数据源 获取字段值 [请先var cardDataSource]",
 		"prefix": "temp cardDataSource sefValue",

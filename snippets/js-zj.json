@@ -18,6 +18,21 @@
 			"\t})"
 		],
 	},
+	"Print taurus.aop.invokeAOPMethod": {
+		"description": "模板: 资金 服务端请求方法",
+		"prefix": "temp taurus.aop.invokeAOPMethod",
+		"body": [
+			"var params = [$4];",
+			"taurus.aop.invokeAOPMethod('$1',",
+			"\t'$1$2',",
+			"\t'$3', params)",
+			"\t.then(function (result) {",
+			"\t\tif (result && result.MedReturn) {",
+			"\t\t\tvar medReturn = result.MedReturn;$5",
+			"\t\t}",
+			"\t})"
+		],
+	},
 	// taurus.aop.invokeAOPMethod
 	"Print zj.rtf.createLockObj": {
 		"description": "声明：资金 创建服务端请求单条锁对象",
@@ -155,6 +170,11 @@
 			"condition += ']';"
 		]
 	},
+	// taurus.utils.getSessionStorge
+	// taurus.utils.delSessionStorge
+	// taurus.utils.setSessionStorge
+	// adp.lookupParams = taurus.adpHelp.createLookupParam('', '', '', []);
+	// taurus.gridHelper.setPagination
 	// ------------------------------------------------------------------------------------------------------------------
 	// ZJGX
 	// ------------------------------------------------------------------------------------------------------------------

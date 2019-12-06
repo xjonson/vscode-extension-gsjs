@@ -7,7 +7,7 @@
 		"description": "模板: datagrid options [请先var datagrid]",
 		"prefix": "var datagrid options",
 		"body": [
-			"var options = ${1:\\$dg1}.datagrid('options');",
+			"var ${2:options} = ${2:\\$dg1}.datagrid('options');",
 		]
 	},
 	"Print datagrid": {
@@ -87,7 +87,7 @@
 		"body": [
 			"${1:\\$dg1}.on('beforeEditCell', function (e, opts) {",
 			"\tif (opts.field == '$2') {$3}",
-			"}"
+			"});"
 		]
 	},
 	// 模板: datagrid 单元格编辑后
@@ -100,6 +100,35 @@
 			"}"
 		]
 	},
+	// 模板: gridHelper 结束列表可编辑单元格
+	"Print gridHelper endEditAllTable": {
+		"description": "模板: gridHelper 结束列表可编辑单元格",
+		"prefix": "temp gridHelper endEditAllTable",
+		"body": [
+			"self.gridHelper.endEditAllTable(self.view);"
+		]
+	},
+	
+	// var $dgmx = $('#XDataGrid1');  var editor = self.gridHelper.getEditHelper(self.view, $dgmx);  editor.endEditing();
+	// self.gridHelper.endEditAllTable(self.view);
+	// self.formHelper.formValidate(self.view) 表单验证
+	// self.gridHelper.validateAllTableAllCell(this.view); 
+	// self.validateAllTableAllCell(); 对gridHelper.validateAllTableAllCell的封装
+	// $('#XDataGrid2').datagrid('getColumnOption', 'ROHXCZBZ_GLZD').editor.options
+
+	// datetimebox
+	// my97datebox
+	// timespinner
+	// textarea
+	// text
+	// numberbox
+	// numberspinner
+	// adplookupbox
+	// adpcombogrid
+	// colorpicker
+	// ------------------------------------------------------------------------------------------------------------------
+	// adpcombogrid
+	// ------------------------------------------------------------------------------------------------------------------
 	// ------------------------------------------------------------------------------------------------------------------
 	// smartDictLookup：智能帮助不建议声明变量，每次调用使用$获取ID即可
 	// ------------------------------------------------------------------------------------------------------------------
@@ -107,7 +136,7 @@
 		"description": "声明: 帮助 options",
 		"prefix": "var smartdictlookup options",
 		"body": [
-			"var ${2:options} = $('#${2:XSmartDictLookup1}').adplookupbox('options');"
+			"var ${1:options} = $('#${2:XSmartDictLookup1}').adplookupbox('options');"
 		]
 	},
 	// 获取帮助过滤条件，用于帮助前过滤
@@ -204,7 +233,7 @@
 		"description": "声明: 下拉选择框 options",
 		"prefix": "var selector options",
 		"body": [
-			"var options = $('#${1:XSelector1}').combo2('options');"
+			"var ${2:options} = $('#${2:XSelector1}').combo2('options');"
 		]
 	},
 	// 下拉框手动赋值
@@ -233,7 +262,7 @@
 		"description": "声明: 日期控件 options",
 		"prefix": "var my97datebox options",
 		"body": [
-			"var options = $('#${1:My97Datebox1}').my97datebox('options');"
+			"var ${2:options} = $('#${2:My97Datebox1}').my97datebox('options');"
 		]
 	},
 	"Print my97datebox setValue": {
@@ -265,7 +294,7 @@
 		"description": "声明: 数值控件 options",
 		"prefix": "var calculator options",
 		"body": [
-			"var options = $('#${1:$XCalculator1}').numberbox('options');"
+			"var ${2:options} = $('#${2:$XCalculator1}').numberbox('options');"
 		]
 	},
 	// 数值输入框手动赋值
