@@ -173,7 +173,7 @@
 	// taurus.utils.getSessionStorge
 	// taurus.utils.delSessionStorge
 	// taurus.utils.setSessionStorge
-	// adp.lookupParams = taurus.adpHelp.createLookupParam('', '', '', []);
+	// 
 	// taurus.gridHelper.setPagination
 	// ------------------------------------------------------------------------------------------------------------------
 	// ZJGX
@@ -186,4 +186,6 @@
 			"var ${1:fkd} = zj.zjgx.bzlx.${1:fkd}",
 		]
 	},
+	// 资金提示
+	// zj.zjgx.message
 }

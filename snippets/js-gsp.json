@@ -65,7 +65,7 @@
 			"gsp.rtf.func.openUrl({ id: id, tabName: tabName, url: url, reload: true });"
 		]
 	},
-	// 模板: 平台 获取上下文变量
+	// 模板: 平台 获取上下文变量 AppInstanceID  AppInstanceName  UserCode  UserID  UserName  BizDate  SysOrgID  SysOrgName  SysOrgCode  UserEmail  LoginDate  UserSecLevel  UserSecLevelID  UserSecLevelCode  UserSecLevelName
 	"Print gsp.rtf.context.get": {
 		"description": "模板: 平台 从上下文中获取参数 [例：当前业务操作ID]",
 		"prefix": "var gsp.rtf.context.get('bizOpId')",
@@ -188,6 +188,52 @@
 	// ------------------------------------------------------------------------------------------------------------------
 	// gsp.core
 	// ------------------------------------------------------------------------------------------------------------------
-	// 金额格式化 金额，前缀[￥]，精确位[2]，千分位分隔符[,]
-	// gsp.core.accounting.formatMoney(1000, '', 1, ',')
+	// 声明: 金额格式化
+	"Print gsp.core.accounting.formatMoney": {
+		"description": "模板: 金额大写",
+		"prefix": [
+			"var gsp.core.accounting.formatMoney"
+		],
+		"body": [
+			"// 参数：金额，前缀[￥]，精确位[2]，千分位分隔符[,]",
+			"var ${1:formatedMoney} = gsp.core.accounting.formatMoney(${2}, '');"
+		]
+	},
+	// ------------------------------------------------------------------------------------------------------------------
+	// formHelper
+	// ------------------------------------------------------------------------------------------------------------------
+	// 表单校验
+	"Print self.formHelper.formValidate": {
+		"description": "模板: 金额大写",
+		"prefix": [
+			"temp self.formHelper.formValidate"
+		],
+		"body": [
+			"var isValidate = self.formHelper.formValidate(self.view);"
+		]
+	},
+	// ------------------------------------------------------------------------------------------------------------------
+	// gridHelper
+	// ------------------------------------------------------------------------------------------------------------------
+	// 可编辑grid校验
+	"Print self.gridHelper.validateAllTableAllCell": {
+		"description": "模板: 可编辑grid校验",
+		"prefix": [
+			"temp self.gridHelper.validateAllTableAllCell",
+		],
+		"body": [
+			// 推荐使用：self.validateAllTableAllCell(); 
+			"self.gridHelper.validateAllTableAllCell(self.view).then(function() {$1})"
+		]
+	},
+	// 可编辑grid校验
+	"Print self.validateAllTableAllCell": {
+		"description": "模板: 可编辑grid校验",
+		"prefix": [
+			"temp self.validateAllTableAllCell",
+		],
+		"body": [
+			"self.validateAllTableAllCell().then(function() {$1})"
+		]
+	}, 
 }
