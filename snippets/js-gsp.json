@@ -65,11 +65,13 @@
 			"gsp.rtf.func.openUrl({ id: id, tabName: tabName, url: url, reload: true });"
 		]
 	},
-	// 模板: 平台 获取上下文变量 AppInstanceID  AppInstanceName  UserCode  UserID  UserName  BizDate  SysOrgID  SysOrgName  SysOrgCode  UserEmail  LoginDate  UserSecLevel  UserSecLevelID  UserSecLevelCode  UserSecLevelName
+	// 模板: 平台 获取上下文变量 
+	// Key: AppInstanceID-实例编号  AppInstanceName-实例名  UserCode-用户名  UserID-用户唯一标识  UserName-用户显示名  BizDate-业务日期  SysOrgID-系统组织ID  SysOrgName-系统组织名称  SysOrgCode-系统组织编号  UserEmail-用户邮箱  LoginDate-登录时间  UserSecLevel-用户的密级  UserSecLevelID-用户密级的ID  UserSecLevelCode-用户密级的Code  UserSecLevelName-用户的密级名称
 	"Print gsp.rtf.context.get": {
 		"description": "模板: 平台 从上下文中获取参数 [例：当前业务操作ID]",
 		"prefix": "var gsp.rtf.context.get('bizOpId')",
 		"body": [
+			"// Key: AppInstanceID-实例编号  AppInstanceName-实例名  UserCode-用户名  UserID-用户唯一标识  UserName-用户显示名  BizDate-业务日期  SysOrgID-系统组织ID  SysOrgName-系统组织名称  SysOrgCode-系统组织编号  UserEmail-用户邮箱  LoginDate-登录时间  UserSecLevel-用户的密级  UserSecLevelID-用户密级的ID  UserSecLevelCode-用户密级的Code  UserSecLevelName-用户的密级名称",
 			"var ${1:bizOpId} = gsp.rtf.context.get('${1:bizOpId}');"
 		]
 	},

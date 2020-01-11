@@ -1,29 +1,35 @@
 # GSJS
 
-一个VScode插件，用于书写适用于GS的JavaScript代码，已发布在[VSCode应用市场](https://marketplace.visualstudio.com/items?itemName=jonson.gsjs#review-details)
+一个VScode插件，用于提高GS7前端开发效率。
 
-## GitHub
+目前实现的功能：
 
-https://github.com/xjonson/vscode-extension-gsjs
+- [ ] 列表、卡片、控件、平台框架、资金框架（zj.core.js）的代码片段
+
+  
+## 如何使用
+
+
 
 
 ## 本地运行
 
-使用VSCode打开项目，`F5` 运行调试即可
-
-## 本地安装
+首先下载[源码](https://github.com/xjonson/vscode-extension-gsjs)，安装依赖
 
 ```
 npm install
 ```
 
+安装完后，`F5` 即可运行调试
+
+打包
+
 ```
 vsce package
 ```
 
-选择项目目录下生成的 .vsix 文件
+## GitHub
 
-![](./images/1574335513923.png)
-
+[github-vscode-extension-gsjs](https://github.com/xjonson/vscode-extension-gsjs)
 
 

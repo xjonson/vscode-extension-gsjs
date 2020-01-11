@@ -2,7 +2,7 @@
  * @Author: JonsonXu
  * @Date: 2019-11-21 14:44:29
  * @Last Modified by: JonsonXu
- * @Last Modified time: 2019-12-07 14:01:05
+ * @Last Modified time: 2019-12-07 16:05:18
  */
  {
 	"Print self": {
@@ -78,4 +78,36 @@
 			"$('#${3:Bar1}').buttongroup('hideButton', btnId);"
 		]
 	},
+	// 提示信息
+	"Print $.notify.info": {
+		"description": "模板: 提示信息",
+		"prefix": "temp $.notify.info",
+		"body": [
+			"$.notify.info(${1})"
+		]
+	},
+	// 提示成功
+	"Print $.notify.success": {
+		"description": "模板: 提示成功",
+		"prefix": "temp $.notify.success",
+		"body": [
+			"$.notify.success(${1})"
+		]
+	},
+	// 提示警告
+	"Print $.notify.warning": {
+		"description": "模板: 提示警告",
+		"prefix": "temp $.notify.warning",
+		"body": [
+			"$.notify.warning(${1})"
+		]
+	},
+	// 提示错误
+	"Print $.notify.error": {
+		"description": "模板: 提示错误",
+		"prefix": "temp $.notify.error",
+		"body": [
+			"$.notify.error(${1})"
+		]
+	}
 }
