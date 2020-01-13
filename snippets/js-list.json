@@ -6,7 +6,7 @@
 	// 获取列表数据源peek
 	"Print get listDSPeek": {
 		"description": "声明: 列表数据源Peek",
-		"prefix": "var listDataSource.peek",
+		"prefix": "var list dataSource peek",
 		"body": [
 			"var listDataSourcePeek = self.listInstance().dataSource.peek();"
 		]
@@ -14,7 +14,7 @@
 	// 获取列表数据源
 	"Print listDS": {
 		"description": "声明: 列表数据源",
-		"prefix": "var listDataSource",
+		"prefix": "var list dataSource",
 		"body": [
 			"var listDataSource = self.listInstance().dataSource;",
 			"var ds$1 = listDataSource.tables('$1');",
@@ -24,7 +24,7 @@
 	// 列表数据源手动加载数据
 	"Print listDS loadData": {
 		"description": "模板: 列表数据源手动加载数据 [请先var listDataSource]",
-		"prefix": "temp listDataSource loadData",
+		"prefix": "temp list dataSource loadData",
 		"body": [
 			"var newListDataSource = [];",
 			"listDataSource.load(newListDataSource);"
@@ -33,7 +33,7 @@
 	// 列表数据源 获取字段值
 	"Print listDS getValue": {
 		"description": "声明: 列表数据源 获取字段值 [请先var listDataSource]",
-		"prefix": "var listDataSource getValue",
+		"prefix": "var list dataSource getValue",
 		"body": [
 			"var str$2 = ds$1.rows(0).getValue('$1_$2');",
 			"var str$2 = listCurrentItem['$1_$2']();"
@@ -51,7 +51,7 @@
 	// 列表数据源 获取总记录数
 	"Print get listDSTotalCount": {
 		"description": "声明: 列表数据源 获取总记录数 [请先var listDataSource]",
-		"prefix": "var listDataSource totalCount",
+		"prefix": "var list dataSource totalCount",
 		"body": [
 			"var totalCount = ds$1.defaultView().totalCount();"
 		]

@@ -89,7 +89,7 @@
 	// 声明: 获取URL参数
 	"Print getUrlParam": {
 		"description": "声明: 获取URL参数",
-		"prefix": "var getUrlParam",
+		"prefix": "var gsp getUrlParam",
 		"body": [
 			"var $1 = self.getUrlParam('$1');"
 		]
@@ -105,7 +105,7 @@
 	// 声明: 设置全局变量
 	"Print setGlobalObj": {
 		"description": "声明: 设置全局变量",
-		"prefix": "setGlobalObj",
+		"prefix": "temp gsp setGlobalObj",
 		"body": [
 			"// notice: 目前平台更推荐使用 updateGlobalObj 的写法",
 			"self.setGlobalObj('$1', $2);"
@@ -114,7 +114,7 @@
 	// 声明: 更新全局变量
 	"Print updateGlobalObj": {
 		"description": "声明: 更新全局变量",
-		"prefix": "updateGlobalObj",
+		"prefix": "temp gsp updateGlobalObj",
 		"body": [
 			"self.updateGlobalObj('$1', '$2', true);"
 		]
@@ -122,7 +122,7 @@
 	// 声明: 获取表单上下文参数
 	"Print getParam": {
 		"description": "声明: 获取表单上下文参数",
-		"prefix": "var self.context.getParam",
+		"prefix": "var gsp self.context.getParam",
 		"body": [
 			"var str$1 = self.context.getParam('$1');"
 		]
@@ -130,7 +130,7 @@
 	// 声明: 设置表单上下文参数
 	"Print setParam": {
 		"description": "模板: 设置表单上下文参数",
-		"prefix": "self.context.setParam",
+		"prefix": "temp gsp self.context.setParam",
 		"body": [
 			"self.context.setParam('$1', '$2');"
 		]
@@ -138,7 +138,7 @@
 	// 模板: self打开新tab页方法
 	"Print selfopenMenu": {
 		"description": "模板: self打开新tab页方法",
-		"prefix": "temp self openMenu",
+		"prefix": "temp gsp self openMenu",
 		"body": [
 			"// 定义：listBaseController.js[3369]",
 			"var tabName = '$1';",
@@ -152,7 +152,7 @@
 	// 声明: 获取FuncID
 	"Print getFuncId": {
 		"description": "声明: 获取FuncID",
-		"prefix": "var self.getFuncId",
+		"prefix": "var gsp self.getFuncId",
 		"body": [
 			"var funcId = self.getFuncId();"
 		]
@@ -160,7 +160,7 @@
 	// 声明: 子卡片获取父列表FuncID
 	"Print getParentFuncId": {
 		"description": "声明: 子卡片获取父列表FuncID",
-		"prefix": "var self.getParentFuncId",
+		"prefix": "var gsp self.getParentFuncId",
 		"body": [
 			"var parentFuncId = self.getParentFuncId();"
 		]
@@ -181,7 +181,7 @@
 		"description": "模板: 状态机迁移到某一状态",
 		"prefix": [
 			"temp stateMachine transitInvoke",
-			"temp self.context.view().transitInvoke"
+			"temp stateMachine self.context.view().transitInvoke"
 		],
 		"body": [
 			"self.context.view().transitInvoke('${1:Save}');"
@@ -208,6 +208,7 @@
 	"Print self.formHelper.formValidate": {
 		"description": "模板: 金额大写",
 		"prefix": [
+			"temp formHelper formValidate",
 			"temp self.formHelper.formValidate"
 		],
 		"body": [
