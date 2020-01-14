@@ -1,5 +1,10 @@
 # Change Log
 
+## 2020/01/12 v0.0.9
+
+完善部分snippet
+部分snippet添加枚举值后选项（如 var gsp.rtf.context.get）
+
 ## 2019/12/07 v0.0.8
 
 新增及完善数十条代码片段

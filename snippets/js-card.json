@@ -32,7 +32,7 @@
 	// 模板: 卡片数据源 获取字段值 [请先var cardDataSource]
 	"Print cardDS setValue": {
 		"description": "模板: 卡片数据源 获取字段值 [请先var cardDataSource]",
-		"prefix": "temp cardDataSource sefValue",
+		"prefix": "temp cardDataSource setValue",
 		"body": [
 			"ds$1.rows(0).setValue('$1_$2', '$3');",
 			"currentItem.setValue('$1_$2', '$3');"
