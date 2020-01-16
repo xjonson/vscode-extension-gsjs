@@ -25,8 +25,6 @@ function activate(context) {
 
 	context.subscriptions.push(disposable);
 
-
-	
 	// 自动补全
 	// require('./completion')(context); 
 

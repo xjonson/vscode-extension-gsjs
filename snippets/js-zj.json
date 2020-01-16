@@ -1,5 +1,4 @@
 {
-    
 	// ------------------------------------------------------------------------------------------------------------------
 	// ZJ
 	// ------------------------------------------------------------------------------------------------------------------
@@ -52,7 +51,10 @@
 	},
 	"Print taurus.aop.createLockObj": {
 		"description": "声明：资金 创建批量加锁对象",
-		"prefix": ["var taurus.aop.createLockObj", "var batchLockObj"],
+		"prefix": [
+			"var taurus.aop.createLockObj",
+			"var batchLockObj"
+		],
 		"body": [
 			"var lockIDs = [];",
 			"var batchLockObj = [{",
@@ -160,13 +162,15 @@
 		]
 	},
 	"Print zj.rtf.createHelpCondition": {
-		"description": "模板: 资金 组织过滤条件函数 [附带注释及示例]",
+		"description": [
+			"模板: 资金 组织过滤条件函数",
+		],
 		"prefix": "temp zj.rtf.createHelpCondition",
 		"body": [
+			"var sql = '';",
 			"var condition = '[';",
-			"// 左括号，比较符，字段，数据类型，值，右括号，关联关系，是否能改变，转化大写比较，表达式类型",
-			"condition += zj.rtf.createHelpCondition(\"\", \" like \", \"${1:ZJJSDJ_XM06}\", \"String\", \"'%\"+${2:bzdbh}+\"%'\", \" and \", \"\", true, false, 1) + ','",
-			"condition += zj.rtf.createHelpCondition(\"\", \" = \", \"${3:ZJJSDJ_YWLY}\", \"String\", \"'${4:FSSC}'\", \"\", \"\", true, false, 1);",
+			"// 左括号，比较符，字段，数据类型[String,Integer,Decimal,Number]，值，右括号，关联关系[and,or]，是否能改变，转化大写比较，表达式类型[0-string,2-sql]",
+			"condition += zj.rtf.createHelpCondition(\"\", \"\", \"\", \"String\", \"sql\", \"\", \"\", true, false, 2);",
 			"condition += ']';"
 		]
 	},
