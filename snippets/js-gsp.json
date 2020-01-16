@@ -65,13 +65,13 @@
 			"gsp.rtf.func.openUrl({ id: id, tabName: tabName, url: url, reload: true });"
 		]
 	},
-	// 模板: 平台 获取上下文中信息 
+	// 模板: 平台 获取上下文变量 
 	"Print gsp.rtf.context.get": {
-		"description": "模板: 平台 获取上下文中信息",
-		"prefix": "var gsp.rtf.context.get('bizOpId')",
+		"description": "模板: 平台 从上下文中获取参数 [例：当前业务操作ID]",
+		"prefix": "var gsp.rtf.context.get",
 		"body": [
-			"// Key: AppInstanceID-实例编号  AppInstanceName-实例名  UserCode-用户名  UserID-用户唯一标识  UserName-用户显示名  BizDate-业务日期  SysOrgID-系统组织ID  SysOrgName-系统组织名称  SysOrgCode-系统组织编号  UserEmail-用户邮箱  LoginDate-登录时间  UserSecLevel-用户的密级  UserSecLevelID-用户密级的ID  UserSecLevelCode-用户密级的Code  UserSecLevelName-用户的密级名称",
-			"var ${1:bizOpId} = gsp.rtf.context.get('${1:bizOpId}');"
+			"var ${2|AppInstanceID,AppInstanceName,UserCode,UserID,UserName,BizDate,SysOrgID,SysOrgName,SysOrgCode,UserEmail,LoginDate,UserSecLevel,UserSecLevelID,UserSecLevelCode,UserSecLevelName|} = gsp.rtf.context.get('${2|AppInstanceID,AppInstanceName,UserCode,UserID,UserName,BizDate,SysOrgID,SysOrgName,SysOrgCode,UserEmail,LoginDate,UserSecLevel,UserSecLevelID,UserSecLevelCode,UserSecLevelName|}');",
+			"// Key: AppInstanceID-实例编号  AppInstanceName-实例名  UserCode-用户名  UserID-用户唯一标识  UserName-用户显示名  BizDate-业务日期  SysOrgID-系统组织ID  SysOrgName-系统组织名称  SysOrgCode-系统组织编号  UserEmail-用户邮箱  LoginDate-登录时间  UserSecLevel-用户的密级  UserSecLevelID-用户密级的ID  UserSecLevelCode-用户密级的Code  UserSecLevelName-用户的密级名称"
 		]
 	},
 	// 声明: 平台 获取URL参数
@@ -106,7 +106,7 @@
 	// 声明: 设置全局变量
 	"Print setGlobalObj": {
 		"description": "声明: 设置全局变量",
-		"prefix": "temp gsp setGlobalObj",
+		"prefix": "temp setGlobalObj",
 		"body": [
 			"// notice: 目前平台更推荐使用 updateGlobalObj 的写法",
 			"self.setGlobalObj('$1', $2);"
@@ -115,7 +115,7 @@
 	// 声明: 更新全局变量
 	"Print updateGlobalObj": {
 		"description": "声明: 更新全局变量",
-		"prefix": "temp gsp updateGlobalObj",
+		"prefix": "temp updateGlobalObj",
 		"body": [
 			"self.updateGlobalObj('$1', '$2', true);"
 		]
@@ -131,7 +131,7 @@
 	// 声明: 设置表单上下文参数
 	"Print setParam": {
 		"description": "模板: 设置表单上下文参数",
-		"prefix": "temp gsp self.context.setParam",
+		"prefix": "temp self.context.setParam",
 		"body": [
 			"self.context.setParam('$1', '$2');"
 		]
@@ -207,7 +207,7 @@
 	// ------------------------------------------------------------------------------------------------------------------
 	// 表单校验
 	"Print self.formHelper.formValidate": {
-		"description": "模板: 金额大写",
+		"description": "模板: 表单校验",
 		"prefix": [
 			"temp formHelper formValidate",
 			"temp self.formHelper.formValidate"
@@ -226,7 +226,7 @@
 			"temp self.gridHelper.validateAllTableAllCell",
 		],
 		"body": [
-			// 推荐使用：self.validateAllTableAllCell(); 
+			"// 推荐使用：self.validateAllTableAllCell(); ",
 			"self.gridHelper.validateAllTableAllCell(self.view).then(function() {$1})"
 		]
 	},
