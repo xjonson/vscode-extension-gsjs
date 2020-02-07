@@ -3,7 +3,7 @@
   "displayName": "GSJS",
   "description": "A VSCode extension for GS",
   "keywords": ["gs", "gsjs"],
-	"version": "0.0.8",
+	"version": "0.0.9",
 	"publisher": "jonson",
 	"icon": "images/icon.png",
   "engines": {

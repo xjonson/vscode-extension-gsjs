@@ -217,7 +217,10 @@
 	// 获取帮助当前选中的数据源
 	"Print smartDictLookup getSelectData": {
 		"description": "模板: 弹框帮助 获取当前选中行的数据源",
-		"prefix": "var adplookupbox get rowData",
+		"prefix": [
+			"var adplookupbox get select rowData",
+			"[注意：帮助后才可获取到，其他时机获取的值为null]"
+		],
 		"body": [
 			"var ${1:helpDataArr} = $('#${2:XSmartDictLookup1}').adplookupbox('textbox').data().rowData;"
 		]
